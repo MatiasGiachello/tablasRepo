@@ -286,12 +286,17 @@ class App extends Component {
             {" "}
             <FontAwesomeIcon icon={faSearch} />
           </button>
+          <div className='filtros-container'>
+            <TiposFiltro
+              tipoSeleccionado={tipoSeleccionado}
+              handleTipoChange={this.handleTipoChange} className="filtro"
+            />
+            <TiposSistemaFiltro />
+            <RangoFechasFiltro data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} />
+          </div>
+
 
         </div>
-        <TiposFiltro
-          tipoSeleccionado={tipoSeleccionado}
-          handleTipoChange={this.handleTipoChange}
-        />
         <DataTable
           columns={this.state.columnas}
           data={empleadosFiltrados} // Cambia esta línea
@@ -302,8 +307,6 @@ class App extends Component {
           fixedHeaderScrollHeight="600px"
           noDataComponent={<span>No se encontró ningún elemento</span>}
         />
-        <TiposSistemaFiltro />
-        <RangoFechasFiltro data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} />
       </div>
 
     )
