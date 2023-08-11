@@ -17,7 +17,7 @@ const data = [
     tipo: "LOG",
     name: "Pedro Martin",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Cotiza",
+    sistema: "COTIZA",
     acciones: "Ver Detalles"
   },
   {
@@ -26,25 +26,25 @@ const data = [
     tipo: "LOG",
     name: "Lucio Bertolini",
     motivo: "Inicio de sesion fallido",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
     id: 3,
     timeStamp: "09/01/23",
-    tipo: "LOG",
+    tipo: "MODIFI",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Labora",
+    sistema: "LABORA",
     acciones: "Ver Detalles"
   },
   {
     id: 4,
     timeStamp: "01/02/23",
-    tipo: "LOG",
+    tipo: "ERROR",
     name: "Lucio Bertolini",
     motivo: "Cierre por inactividad",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
@@ -53,7 +53,7 @@ const data = [
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Labora",
+    sistema: "LABORA",
     acciones: "Ver Detalles"
   },
   {
@@ -62,7 +62,7 @@ const data = [
     tipo: "LOG",
     name: "Lucio Bertolibi",
     motivo: "Cierre por inactividad",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
@@ -71,7 +71,7 @@ const data = [
     tipo: "LOG",
     name: "Pedro Martin",
     motivo: "Cierre por inactividad",
-    sistema: "Cotiza",
+    sistema: "COTIZA",
     acciones: "Ver Detalles"
   },
   {
@@ -80,7 +80,7 @@ const data = [
     tipo: "LOG",
     name: "Andres Dordi",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Labora",
+    sistema: "LABORA",
     acciones: "Ver Detalles"
   },
   {
@@ -89,7 +89,7 @@ const data = [
     tipo: "LOG",
     name: "Lucio Bertolini",
     motivo: "Cierre por inactividad",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
@@ -98,7 +98,7 @@ const data = [
     tipo: "MODIFI",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Labora",
+    sistema: "LABORA",
     acciones: "Ver Detalles"
   },
   {
@@ -107,7 +107,7 @@ const data = [
     tipo: "ERROR",
     name: "Pedro Martin",
     motivo: "Inicio de sesion exitoso",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
@@ -116,7 +116,7 @@ const data = [
     tipo: "MODIFI",
     name: "Lucio Bertolini",
     motivo: "generacion de tickets de Sistema ",
-    sistema: "Cotiza",
+    sistema: "COTIZA",
     acciones: "Ver Detalles"
   },
   {
@@ -125,7 +125,7 @@ const data = [
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "inicio de sesion",
-    sistema: "Labora",
+    sistema: "LABORA",
     acciones: "Ver Detalles"
   },
   {
@@ -134,7 +134,7 @@ const data = [
     tipo: "LOG",
     name: "Lucio bertolini",
     motivo: "Cierre de Sesion por inactividad",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
   {
@@ -143,7 +143,7 @@ const data = [
     tipo: "MODIFI",
     name: "Pedro Martin",
     motivo: "Cierre de sesion de manera exitosa",
-    sistema: "Farma",
+    sistema: "FARMA",
     acciones: "Ver Detalles"
   },
 
@@ -162,7 +162,7 @@ class App extends Component {
     columnas: [],
     empleadosFiltrados: data,
     tipoSeleccionado: 'Todos',
-    tipos: data
+    tipos: data,
   };
 
   handleTipoChange = (tipo) => {
@@ -180,6 +180,11 @@ class App extends Component {
       });
     }
   };
+
+
+
+
+
   filtrarElementos = () => {
     const { tipoSeleccionado, empleados } = this.state;
 
@@ -189,6 +194,7 @@ class App extends Component {
 
     this.setState({ empleadosFiltrados: empleadosFiltradosPorTipo });
   };
+
 
   actualizarElementosFiltrados = (elementosFiltradosPorTipo) => {
     this.setState({ empleadosFiltrados: elementosFiltradosPorTipo });
@@ -264,28 +270,15 @@ class App extends Component {
   componentDidMount() {
     this.crearIndex();
     this.asignarColumnas();
-    this.setState({ empleados: data, empleadosFiltrados: data }); // Inicializar empleadosFiltrados con todos los datos
+    this.setState({ empleados: data, empleadosFiltrados: data });
   }
 
   render() {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
-    /*const columnsWithButton = [...this.state.columnas];
-    const detallesColumnIndex = columnsWithButton.findIndex(column => column.name === 'ACCIONES');
-
-    if (detallesColumnIndex !== -1) {
-      columnsWithButton[detallesColumnIndex] = {
-        ...columnsWithButton[detallesColumnIndex],
-        cell: (row) => (
-          <button className="ver-detalles-button" onClick={() => this.mostrarDetalles(row)}>
-            Ver Detalles
-          </button>
-        )
-      };
-    }*/
 
 
     return (
-      <div className="table-responsive">
+      <div className="table-responsive" >
         <div className="barraBusqueda">
           <input
             type="text"
@@ -307,10 +300,16 @@ class App extends Component {
               />
             </div>
             <div className='filtro-column'>
-              <TiposSistema className="filtro" />
+              <TiposSistema className="filtro"
+
+              />
+
             </div>
             <div className='filtro-column'>
-              <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro" />
+              <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
+
+
+              />
             </div>
             {/* <div>
               {empleadosFiltrados.map((item) => (
@@ -341,4 +340,5 @@ class App extends Component {
     )
   }
 }
+
 export default App;

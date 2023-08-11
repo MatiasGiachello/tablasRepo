@@ -4,15 +4,15 @@ import './TiposSistema.css'
 const Sistemas = [
     {
         id: 1,
-        nombre: 'Cotiza',
+        nombre: 'COTIZA',
     },
     {
         id: 2,
-        nombre: 'Farma',
+        nombre: 'FARMA',
     },
     {
         id: 3,
-        nombre: 'Labora',
+        nombre: 'LABORA',
     },
 ];
 

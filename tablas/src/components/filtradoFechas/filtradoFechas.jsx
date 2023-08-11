@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class FiltradoFechas extends Component {
     constructor(props) {
         super(props);
@@ -34,9 +35,8 @@ class FiltradoFechas extends Component {
     render() {
         return (
             <div>
-                <h2>Fecha</h2>
+                <h2>Entre fechas</h2>
                 <div>
-                    <label>Fecha Inicial:</label>
                     <input
                         type="date"
                         value={this.state.fechaInicio}
@@ -44,7 +44,7 @@ class FiltradoFechas extends Component {
                     />
                 </div>
                 <div>
-                    <label>Fecha Final:</label>
+                    <label>  y  </label>
                     <input
                         type="date"
                         value={this.state.fechaFin}
