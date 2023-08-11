@@ -5,8 +5,8 @@ import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
-import TiposSistemaFiltro from './TiposSistema/TiposSistema';
-import RangoFechasFiltro from './components/filtradoFechas/filtradoFechas';
+import TiposSistema from './components/TiposSistema/TiposSistema';
+import FiltradoFechas from './components/filtradoFechas/filtradoFechas';
 
 //import React, { useState, useEffect } from 'react';
 //import 'styled-components'
@@ -287,19 +287,23 @@ class App extends Component {
             <FontAwesomeIcon icon={faSearch} />
           </button>
           <div className='filtros-container'>
-            <TiposFiltro
-              tipoSeleccionado={tipoSeleccionado}
-              handleTipoChange={this.handleTipoChange} className="filtro"
-            />
-            <TiposSistemaFiltro />
-            <RangoFechasFiltro data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} />
+            <div className='filtro-column'>
+              <TiposFiltro
+                tipoSeleccionado={tipoSeleccionado}
+                handleTipoChange={this.handleTipoChange} className="filtro"
+              />
+            </div>
+            <div className='filtro-column'>
+              <TiposSistema className="filtro" />
+            </div>
+            <div className='filtro-column'>
+              <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro" />
+            </div>
           </div>
-
-
         </div>
         <DataTable
           columns={this.state.columnas}
-          data={empleadosFiltrados} // Cambia esta línea
+          data={empleadosFiltrados} 
           title="Surfactan"
           pagination
           paginationComponentOptions={paginacionOpciones}

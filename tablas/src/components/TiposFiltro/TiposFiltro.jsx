@@ -21,7 +21,7 @@ class TiposFiltro extends Component {
 
         return (
             <div>
-                <h2>Filtrar por Tipos</h2>
+                <h2> Tipos </h2>
                 <div>
                     <label>Seleccionar Tipo:</label>
                     <select

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RangoFechasFiltro extends Component {
+class FiltradoFechas extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,4 +57,4 @@ class RangoFechasFiltro extends Component {
     }
 }
 
-export default RangoFechasFiltro;
+export default FiltradoFechas;
