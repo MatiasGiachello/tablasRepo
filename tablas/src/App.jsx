@@ -4,12 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import TiposSistema from './components/TiposSistema/TiposSistema';
+import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import FiltradoFechas from './components/filtradoFechas/filtradoFechas';
+//import Item from './components/Item/Item';
 
-//import React, { useState, useEffect } from 'react';
-//import 'styled-components'
 
 const data = [
   {
@@ -270,6 +269,20 @@ class App extends Component {
 
   render() {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
+    /*const columnsWithButton = [...this.state.columnas];
+    const detallesColumnIndex = columnsWithButton.findIndex(column => column.name === 'ACCIONES');
+
+    if (detallesColumnIndex !== -1) {
+      columnsWithButton[detallesColumnIndex] = {
+        ...columnsWithButton[detallesColumnIndex],
+        cell: (row) => (
+          <button className="ver-detalles-button" onClick={() => this.mostrarDetalles(row)}>
+            Ver Detalles
+          </button>
+        )
+      };
+    }*/
+
 
     return (
       <div className="table-responsive">
@@ -299,11 +312,23 @@ class App extends Component {
             <div className='filtro-column'>
               <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro" />
             </div>
+            {/* <div>
+              {empleadosFiltrados.map((item) => (
+                <Item
+                  key={item.id}
+                  item={{
+                    title: item.name,
+                    description: item.motivo,
+                    additionalDetails: item.acciones
+                  }}
+                />
+              ))}
+            </div> */}
           </div>
         </div>
         <DataTable
           columns={this.state.columnas}
-          data={empleadosFiltrados} 
+          data={empleadosFiltrados}
           title="Surfactan"
           pagination
           paginationComponentOptions={paginacionOpciones}
