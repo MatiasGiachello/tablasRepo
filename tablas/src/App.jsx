@@ -8,6 +8,7 @@ import TiposSistema from './components/TiposSistema/TiposSistema';
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import FiltradoFechas from './components/filtradoFechas/filtradoFechas';
 //import Item from './components/Item/Item';
+import { Button } from 'bootstrap';
 
 
 const data = [
@@ -301,15 +302,16 @@ class App extends Component {
             </div>
             <div className='filtro-column'>
               <TiposSistema className="filtro"
-
               />
-
             </div>
             <div className='filtro-column'>
               <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
-
-
               />
+            </div>
+            <div>
+              <button color='primary' >
+                Ver Detalles
+              </button>
             </div>
             {/* <div>
               {empleadosFiltrados.map((item) => (
