@@ -122,7 +122,7 @@ const data = [
   },
   {
     id: 12,
-    timeStamp: "04/09/23",
+    timeStamp: "04/02/23",
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "inicio de sesion",
@@ -301,7 +301,9 @@ class App extends Component {
               />
             </div>
             <div className='filtro-column'>
-              <TiposSistema className="filtro"
+              <TiposSistema
+                tipoSeleccionado={tipoSeleccionado}
+                handleTipoChange={this.handleTipoChange} className="filtro"
               />
             </div>
             <div className='filtro-column'>

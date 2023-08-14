@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './TiposSistema.css'
 
+
 const Sistemas = [
     {
         id: 1,
@@ -19,7 +20,6 @@ const Sistemas = [
 class TiposSistema extends Component {
     render() {
         const { tipoSeleccionado, handleTipoChange } = this.props;
-
         return (
             <div>
                 <h2> Tipos </h2>
