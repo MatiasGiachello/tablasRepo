@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DataTable from 'react-data-table-component';
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import TiposSistema from './components/TiposSistema/TiposSistema';
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
-import FiltradoFechas from './components/filtradoFechas/filtradoFechas';
+import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas';
 //import Item from './components/Item/Item';
 import { Button } from 'bootstrap';
 
@@ -276,8 +276,6 @@ class App extends Component {
 
   render() {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
-
-
     return (
       <div className="table-responsive" >
         <div className="barraBusqueda">
@@ -302,9 +300,7 @@ class App extends Component {
             </div>
             <div className='filtro-column'>
               <TiposSistema
-                tipoSeleccionado={tipoSeleccionado}
-                handleTipoChange={this.handleTipoChange} className="filtro"
-              />
+                tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoChange} className="filtro" />
             </div>
             <div className='filtro-column'>
               <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"

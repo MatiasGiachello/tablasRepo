@@ -12,18 +12,17 @@ class FiltradoFechas extends Component {
 
     handleFechaInicioChange = (e) => {
         this.setState({ fechaInicio: e.target.value });
-        this.filtrarElementos();
+        this.filtrarPorRangoFechas(); // Cambia esta línea
     };
-
+    
     handleFechaFinChange = (e) => {
         this.setState({ fechaFin: e.target.value });
-        this.filtrarElementos();
+        this.filtrarPorRangoFechas();
     };
 
     filtrarPorRangoFechas = () => {
         const { fechaInicio, fechaFin } = this.state;
         if (fechaInicio && fechaFin) {
-            // Filtrar los elementos por el rango de fechas seleccionado
             const elementosFiltrados = this.props.data.filter((item) => {
                 const fechaItem = new Date(item.timeStamp);
                 return fechaItem >= new Date(fechaInicio) && fechaItem <= new Date(fechaFin);

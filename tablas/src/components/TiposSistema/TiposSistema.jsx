@@ -17,7 +17,35 @@ const Sistemas = [
     },
 ];
 
+/**
+ * A React component that renders a dropdown menu with options for selecting a system type.
+ * 
+ * @component
+ * @example
+ * import React, { useState } from 'react';
+ * import TiposSistema from './TiposSistema';
+ * 
+ * function App() {
+ *   const [tipoSeleccionado, setTipoSeleccionado] = useState('Todos');
+ * 
+ *   const handleTipoChange = (tipo) => {
+ *     setTipoSeleccionado(tipo);
+ *   };
+ * 
+ *   return (
+ *     <div>
+ *       <TiposSistema tipoSeleccionado={tipoSeleccionado} handleTipoChange={handleTipoChange} />
+ *       <p>Selected type: {tipoSeleccionado}</p>
+ *     </div>
+ *   );
+ * }
+ */
 class TiposSistema extends Component {
+    /**
+     * Renders the component.
+     * 
+     * @returns {JSX.Element} The rendered component.
+     */
     render() {
         const { tipoSeleccionado, handleTipoChange } = this.props;
         return (
@@ -34,6 +62,7 @@ class TiposSistema extends Component {
                             <option key={tipo.id} value={tipo.nombre}>
                                 {tipo.nombre}
                             </option>
+
                         ))}
                     </select>
                 </div>
@@ -53,18 +82,18 @@ export default TiposSistema;
 //         };
 //     }
 
-//     handleTipoSistemaChange = (tipoSistema) => {
-//         this.setState({ tipoSistemaSeleccionado: tipoSistema });
-//         this.props.onTipoSistemaChange(tipoSistema);
+//     handleTipoSistemaChange = (TipoSistema) => {
+//         this.setState({ tipoSistemaSeleccionado: TipoSistema });
+//         this.props.onTipoSistemaChange(TipoSistema);
 //     };
 
 //     render() {
 //         const { tiposSistema, tipoSistemaSeleccionado } = this.state;
 
-//         const tiposSistemaFiltrados = tiposSistema.filter((tipoSistema) => {
+//         const tiposSistemaFiltrados = tiposSistema.filter((TipoSistema) => {
 //             return (
 //                 tipoSistemaSeleccionado === 'Todos' ||
-//                 tipoSistema.nombre === tipoSistemaSeleccionado
+//                 TipoSistema.nombre === tipoSistemaSeleccionado
 //             );
 //         });
 
@@ -78,16 +107,16 @@ export default TiposSistema;
 //                         onChange={(e) => this.handleTipoSistemaChange(e.target.value)}
 //                     >
 //                         <option value="Todos">Todos</option>
-//                         {tiposSistema.map((tipoSistema) => (
-//                             <option key={tipoSistema.id} value={tipoSistema.nombre}>
-//                                 {tipoSistema.nombre}
+//                         {tiposSistema.map((TipoSistema) => (
+//                             <option key={TipoSistema.id} value={tipoSistema.nombre}>
+//                                 {TipoSistema.nombre}
 //                             </option>
 //                         ))}
 //                     </select>
 //                 </div>
 //                 <ul>
-//                     {tiposSistemaFiltrados.map((tipoSistema) => (
-//                         <li key={tipoSistema.id}>{tipoSistema.nombre}</li>
+//                     {tiposSistemaFiltrados.map((TipoSistema) => (
+//                         <li key={TipoSistema.id}>{TipoSistema.nombre}</li>
 //                     ))}
 //                 </ul>
 //             </div>
@@ -97,7 +126,6 @@ export default TiposSistema;
 
 
 // export default TiposSistema;
-
 
 //     render() {
 //         const { tipoSistemas, handleTipoSistemaChange } = this.props;
