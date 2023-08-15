@@ -1,14 +1,17 @@
-import { Component, useState } from 'react';
+import { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ReactDOM } from 'react';
 import DataTable from 'react-data-table-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import TiposSistema from './components/TiposSistema/TiposSistema';
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas';
+//import ItemCount from './components/ItemCount';
 //import Item from './components/Item/Item';
-import { Button } from 'bootstrap';
+
+
 
 
 const data = [
@@ -173,7 +176,7 @@ class App extends Component {
         empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
       });
     } else {
-      const empleadosFiltradosPorTipo = this.state.empleados.filter(item => item.tipo === tipo);
+      const empleadosFiltradosPorTipo = this.state.empleadosFiltrados.filter(item => item.tipo === tipo);
 
       this.setState({
         tipoSeleccionado: tipo,
@@ -182,9 +185,36 @@ class App extends Component {
     }
   };
 
+  /**
+   * XXX 
+   * 
+   * Aca queda ver el caso en que hayas filtrado por Tipo (LOG, ERROR, etc)
+   * y pongas TODOS en los sistemas despues de haber filtrado por COTIZA, por ejemplo.
+   * 
+  */
+  handleTipoSistemaChange = (tipo) => {
+    if (tipo === 'Todos') {
+      this.setState({
+        tipoSeleccionado: tipo,
+        empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
+      });
+    } else {
+      /**
+       * Aca puede pasar que se haya filtrado anteriormente por un sistema que no tuviese coincidencias, por lo tanto
+       * tomamos el total de empleado SIN filtrar para realizar la busqueda nuevamente. Sino, no tendriamos datos que buscar.
+       * 
+       * Arriba deberias tener en cuenta lo mismo. Hace la prueba, filtra primero por LOG y luego por ERROR.
+       * Aunque tenes datos para coincidir con ERROR, no te los muestra.
+       */
+      const _empleados = this.state.empleadosFiltrados.length ? this.state.empleadosFiltrados : this.state.empleados;
+      const empleadosFiltradosPorTipoSistema = _empleados.filter(item => item.sistema === tipo);
 
-
-
+      this.setState({
+        tipoSeleccionado: tipo,
+        empleadosFiltrados: empleadosFiltradosPorTipoSistema,
+      });
+    }
+  };
 
   filtrarElementos = () => {
     const { tipoSeleccionado, empleados } = this.state;
@@ -194,6 +224,28 @@ class App extends Component {
       : empleados.filter(item => item.tipo === tipoSeleccionado);
 
     this.setState({ empleadosFiltrados: empleadosFiltradosPorTipo });
+    filtrarElementos = () => {
+      const search = data.filter(item => {
+        if (
+          item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
+          item.tipo.toLowerCase().includes(this.state.busqueda) ||
+          item.name.toLowerCase().includes(this.state.busqueda) ||
+          item.motivo.toLowerCase().includes(this.state.busqueda) ||
+          item.sistema.toLowerCase().includes(this.state.busqueda) ||
+          item.acciones.toLowerCase().includes(this.state.busqueda)
+        ) {
+          return true;
+        }
+        return false;
+      });
+  
+      const tiposFiltro = this.state.empleadosFiltrados.filter((item) => {
+        return this.state.tipoSeleccionado === 'Todos' || item.tipo === this.state.tipoSeleccionado;
+      });
+  
+      this.setState({ empleados: search, empleadosFiltrados: tiposFiltro });
+    };
+  
   };
 
 
@@ -276,6 +328,8 @@ class App extends Component {
 
   render() {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
+    const TABLE_TITLE = "Surfactan";
+    const fixedHeaderScrollHeight = "600px";
     return (
       <div className="table-responsive" >
         <div className="barraBusqueda">
@@ -300,40 +354,42 @@ class App extends Component {
             </div>
             <div className='filtro-column'>
               <TiposSistema
-                tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoChange} className="filtro" />
+                tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
             </div>
             <div className='filtro-column'>
               <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
               />
             </div>
             <div>
-              <button color='primary' >
+              {<button color='primary' >
                 Ver Detalles
-              </button>
+              </button>}
             </div>
+
             {/* <div>
               {empleadosFiltrados.map((item) => (
                 <Item
-                  key={item.id}
-                  item={{
-                    title: item.name,
-                    description: item.motivo,
-                    additionalDetails: item.acciones
-                  }}
+                  // key={item.id}
+                  // item={{
+                  //   title: item.name,
+                  //   description: item.motivo,
+                  //   additionalDetails: item.acciones
+                  // }}
                 />
               ))}
             </div> */}
           </div>
         </div>
+
         <DataTable
-          columns={this.state.columnas}
-          data={empleadosFiltrados}
-          title="Surfactan"
-          pagination
-          paginationComponentOptions={paginacionOpciones}
-          fixedHeader
-          fixedHeaderScrollHeight="600px"
-          noDataComponent={<span>No se encontró ningún elemento</span>}
+        columns={this.state.columnas}
+        data={empleadosFiltrados}
+        title={TABLE_TITLE}
+        pagination
+        paginationComponentOptions={paginacionOpciones}
+        fixedHeader
+        fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+        noDataComponent={<span>No se encontró ningún elemento</span>}
         />
       </div>
 

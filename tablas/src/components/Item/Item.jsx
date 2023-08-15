@@ -1,24 +1,36 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const Item = ({ item }) => {
-    const [showDetails, setShowDetails] = useState(false);
+function boton() {
+  const [showDetails, setShowDetails] = useState(false);
 
-    const toggleDetails = () => {
-        setShowDetails(!showDetails);
-    };
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
 
-    return (
-        <div>
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-            <button onClick={toggleDetails}>
-                {showDetails ? "Ocultar Detalles" : "Ver Detalles"}
-            </button>
-        </div>
-    );
-};
+  return (
+    <div className="boton">
+      <div>
+        <h2>Producto</h2>
+        <button onClick={toggleDetails}>
+          {showDetails ? 'Ocultar detalles' : 'Ver detalles'}
+        </button>
+        {showDetails && (
+          <div>
+            <p>Detalles del Producto:</p>
+            <ul>
+              <li>Característica 1</li>
+              <li>Característica 2</li>
+              <li>Característica 3</li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
-export default Item;
+export default boton;
+
 
 
 
