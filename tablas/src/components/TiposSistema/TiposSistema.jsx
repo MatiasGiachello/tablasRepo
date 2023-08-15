@@ -49,8 +49,7 @@ class TiposSistema extends Component {
     render() {
         const { tipoSeleccionado, handleTipoChange } = this.props;
         return (
-            <div>
-                <h2> Tipos </h2>
+            <div className='sistema'>
                 <div>
                     <label>Seleccionar Tipo:</label>
                     <select

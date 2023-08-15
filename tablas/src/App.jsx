@@ -216,36 +216,35 @@ class App extends Component {
     }
   };
 
+  // filtrarElementos = () => {
+  //   const { tipoSeleccionado, empleados } = this.state;
+
+  //   const empleadosFiltradosPorTipo = tipoSeleccionado === 'Todos'
+  //     ? empleados
+  //     : empleados.filter(item => item.tipo === tipoSeleccionado);
+  
+  // };
+
   filtrarElementos = () => {
-    const { tipoSeleccionado, empleados } = this.state;
+    const search = data.filter(item => {
+      if (
+        item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
+        item.tipo.toLowerCase().includes(this.state.busqueda) ||
+        item.name.toLowerCase().includes(this.state.busqueda) ||
+        item.motivo.toLowerCase().includes(this.state.busqueda) ||
+        item.sistema.toLowerCase().includes(this.state.busqueda) ||
+        item.acciones.toLowerCase().includes(this.state.busqueda)
+      ) {
+        return true;
+      }
+      return false;
+    });
 
-    const empleadosFiltradosPorTipo = tipoSeleccionado === 'Todos'
-      ? empleados
-      : empleados.filter(item => item.tipo === tipoSeleccionado);
+    const tiposFiltro = this.state.empleadosFiltrados.filter((item) => {
+      return this.state.tipoSeleccionado === 'Todos' || item.tipo === this.state.tipoSeleccionado;
+    });
 
-    this.setState({ empleadosFiltrados: empleadosFiltradosPorTipo });
-    filtrarElementos = () => {
-      const search = data.filter(item => {
-        if (
-          item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
-          item.tipo.toLowerCase().includes(this.state.busqueda) ||
-          item.name.toLowerCase().includes(this.state.busqueda) ||
-          item.motivo.toLowerCase().includes(this.state.busqueda) ||
-          item.sistema.toLowerCase().includes(this.state.busqueda) ||
-          item.acciones.toLowerCase().includes(this.state.busqueda)
-        ) {
-          return true;
-        }
-        return false;
-      });
-  
-      const tiposFiltro = this.state.empleadosFiltrados.filter((item) => {
-        return this.state.tipoSeleccionado === 'Todos' || item.tipo === this.state.tipoSeleccionado;
-      });
-  
-      this.setState({ empleados: search, empleadosFiltrados: tiposFiltro });
-    };
-  
+    this.setState({ empleados: search, empleadosFiltrados: tiposFiltro });
   };
 
 
@@ -288,29 +287,7 @@ class App extends Component {
     this.setState({ columnas: columnas });
   }
 
-
-  filtrarElementos = () => {
-    const search = data.filter(item => {
-      if (
-        item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
-        item.tipo.toLowerCase().includes(this.state.busqueda) ||
-        item.name.toLowerCase().includes(this.state.busqueda) ||
-        item.motivo.toLowerCase().includes(this.state.busqueda) ||
-        item.sistema.toLowerCase().includes(this.state.busqueda) ||
-        item.acciones.toLowerCase().includes(this.state.busqueda)
-      ) {
-        return true;
-      }
-      return false;
-    });
-
-    const tiposFiltro = this.state.empleadosFiltrados.filter((item) => {
-      return this.state.tipoSeleccionado === 'Todos' || item.tipo === this.state.tipoSeleccionado;
-    });
-
-    this.setState({ empleados: search, empleadosFiltrados: tiposFiltro });
-  };
-
+  
   crearIndex = () => {
     var contador = 1;
     data.map(elemento => {

@@ -34,16 +34,18 @@ class FiltradoFechas extends Component {
     render() {
         return (
             <div>
-                <h2>Entre fechas</h2>
                 <div>
+                    <div className='fechas'>
+                        <label>  desde: </label>
+                    </div>
                     <input
                         type="date"
                         value={this.state.fechaInicio}
                         onChange={this.handleFechaInicioChange}
                     />
                 </div>
-                <div>
-                    <label>  y  </label>
+                <div className='fechas'>
+                    <label>  hasta:  </label>
                     <input
                         type="date"
                         value={this.state.fechaFin}

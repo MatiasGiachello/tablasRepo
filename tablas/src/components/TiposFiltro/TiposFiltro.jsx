@@ -20,8 +20,7 @@ class TiposFiltro extends Component {
         const { tipoSeleccionado, handleTipoChange } = this.props;
 
         return (
-            <div>
-                <h2> Tipos </h2>
+            <div className='filtro'>
                 <div>
                     <label>Seleccionar Tipo:</label>
                     <select
