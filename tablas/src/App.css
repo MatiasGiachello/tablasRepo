@@ -103,3 +103,18 @@
   margin-bottom: 10px;
 }
 
+.btn-ver-detalles {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn-ver-detalles:hover{
+  transition: 0, 0, 1;
+  
+}
+
+

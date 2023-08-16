@@ -8,6 +8,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import TiposSistema from './components/TiposSistema/TiposSistema';
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas';
+//import DetalleEmpleado from './components/DetallesEmpleados/DetallesEmpleados';
 //import ItemCount from './components/ItemCount';
 //import Item from './components/Item/Item';
 
@@ -166,6 +167,7 @@ class App extends Component {
     columnas: [],
     empleadosFiltrados: data,
     tipoSeleccionado: 'Todos',
+    tipoSistemaSeleccionado: 'Todos',
     tipos: data,
   };
 
@@ -176,7 +178,7 @@ class App extends Component {
         empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
       });
     } else {
-      const empleadosFiltradosPorTipo = this.state.empleadosFiltrados.filter(item => item.tipo === tipo);
+      const empleadosFiltradosPorTipo = this.state.empleados.filter(item => item.tipo === tipo);
 
       this.setState({
         tipoSeleccionado: tipo,
@@ -195,7 +197,7 @@ class App extends Component {
   handleTipoSistemaChange = (tipo) => {
     if (tipo === 'Todos') {
       this.setState({
-        tipoSeleccionado: tipo,
+        tipoSistemaSeleccionado: tipo,
         empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
       });
     } else {
@@ -206,12 +208,17 @@ class App extends Component {
        * Arriba deberias tener en cuenta lo mismo. Hace la prueba, filtra primero por LOG y luego por ERROR.
        * Aunque tenes datos para coincidir con ERROR, no te los muestra.
        */
-      const _empleados = this.state.empleadosFiltrados.length ? this.state.empleadosFiltrados : this.state.empleados;
+      const _empleados = this.state.empleados.filter(item => item.tipo === this.state.tipoSeleccionado);
       const empleadosFiltradosPorTipoSistema = _empleados.filter(item => item.sistema === tipo);
 
+
+      // const _empleadosSistema = this.state.empleados.filter(item => item.sistema === this.state.tipoSeleccionado);
+      // const empleadosFiltradosPorSistema = _empleadosSistema.filter(item => item.tipo === sistema);
+
       this.setState({
-        tipoSeleccionado: tipo,
+        tipoSistemaSeleccionado: tipo,
         empleadosFiltrados: empleadosFiltradosPorTipoSistema,
+        //empleadosFiltrados: empleadosFiltradosPorSistema,
       });
     }
   };
@@ -281,11 +288,19 @@ class App extends Component {
       },
       {
         name: 'ACCIONES',
-        selector: row => row.acciones
-      }
+        cell: row => (
+          <button className="btn-ver-detalles" onClick={() => this.verDetalles(row)}>
+            Ver Detalles
+          </button>
+        ),
+      },
     ];
     this.setState({ columnas: columnas });
   }
+
+  verDetalles = (row) => {
+    console.log('Detalles de', row);
+  };
 
   
   crearIndex = () => {
@@ -325,7 +340,7 @@ class App extends Component {
           <div className='filtros-container'>
             <div className='filtro-column'>
               <TiposFiltro
-                tipoSeleccionado={tipoSeleccionado}
+                tipoSeleccionado={this.state.tipoSeleccionado}
                 handleTipoChange={this.handleTipoChange} className="filtro"
               />
             </div>
@@ -337,24 +352,6 @@ class App extends Component {
               <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
               />
             </div>
-            <div>
-              {<button color='primary' >
-                Ver Detalles
-              </button>}
-            </div>
-
-            {/* <div>
-              {empleadosFiltrados.map((item) => (
-                <Item
-                  // key={item.id}
-                  // item={{
-                  //   title: item.name,
-                  //   description: item.motivo,
-                  //   additionalDetails: item.acciones
-                  // }}
-                />
-              ))}
-            </div> */}
           </div>
         </div>
 
