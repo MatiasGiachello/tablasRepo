@@ -8,9 +8,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
 import TiposSistema from './components/TiposSistema/TiposSistema';
 import TiposFiltro from './components/TiposFiltro/TiposFiltro';
 import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas';
-//import DetalleEmpleado from './components/DetallesEmpleados/DetallesEmpleados';
-//import ItemCount from './components/ItemCount';
-//import Item from './components/Item/Item';
+import DetallesEmpleado from './components/DetallesEmpleados/DetallesEmpleados';
 
 
 
@@ -169,6 +167,7 @@ class App extends Component {
     tipoSeleccionado: 'Todos',
     tipoSistemaSeleccionado: 'Todos',
     tipos: data,
+    selectedRow: null,
   };
 
   handleTipoChange = (tipo) => {
@@ -229,7 +228,7 @@ class App extends Component {
   //   const empleadosFiltradosPorTipo = tipoSeleccionado === 'Todos'
   //     ? empleados
   //     : empleados.filter(item => item.tipo === tipoSeleccionado);
-  
+
   // };
 
   filtrarElementos = () => {
@@ -299,10 +298,15 @@ class App extends Component {
   }
 
   verDetalles = (row) => {
-    console.log('Detalles de', row);
+    this.setState({ selectedRow: row });
   };
 
-  
+  cerrarDetalles = () => {
+    this.setState({ selectedRow: null });
+  };
+
+
+
   crearIndex = () => {
     var contador = 1;
     data.map(elemento => {
@@ -323,52 +327,76 @@ class App extends Component {
     const TABLE_TITLE = "Surfactan";
     const fixedHeaderScrollHeight = "600px";
     return (
-      <div className="table-responsive" >
-        <div className="barraBusqueda">
-          <input
-            type="text"
-            placeholder="Buscar"
-            className="textField"
-            name="busqueda"
-            value={this.state.busqueda}
-            onChange={this.onChange}
-          />
-          <button type="button" className="btnBuscar" /*onClick={onClear}*/>
-            {" "}
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-          <div className='filtros-container'>
-            <div className='filtro-column'>
-              <TiposFiltro
-                tipoSeleccionado={this.state.tipoSeleccionado}
-                handleTipoChange={this.handleTipoChange} className="filtro"
-              />
-            </div>
-            <div className='filtro-column'>
-              <TiposSistema
-                tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
-            </div>
-            <div className='filtro-column'>
-              <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
-              />
-            </div>
+      <div>
+        {this.state.selectedRow ?
+          <div>
+            {this.state.selectedRow && (
+              <DetallesEmpleado empleado={this.state.selectedRow} onClose={this.cerrarDetalles} />
+            )}
           </div>
-        </div>
+          :
+          <div className="table-responsive" >
+            <div className="barraBusqueda">
+              <input
+                type="text"
+                placeholder="Buscar"
+                className="textField"
+                name="busqueda"
+                value={this.state.busqueda}
+                onChange={this.onChange}
+              />
+              <button type="button" className="btnBuscar" /*onClick={onClear}*/>
+                {" "}
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+              <div className='filtros-container'>
+                <div className='filtro-column'>
+                  <TiposFiltro
+                    tipoSeleccionado={this.state.tipoSeleccionado}
+                    handleTipoChange={this.handleTipoChange} className="filtro"
+                  />
+                </div>
+                <div className='filtro-column'>
+                  <TiposSistema
+                    tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
+                </div>
+                <div className='filtro-column'>
+                  <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
+                  />
+                </div>
+                <div>
+                  {/* {this.state.selectedRow && (
+                <div className="detalles-section">
+                  <h2>Detalles</h2>
+                  <p>Nombre: {this.state.selectedRow.name}</p>
+                  <p>TimeStamp: {this.state.selectedRow.timeStamp}</p>
+                  <h5>Evento: {this.state.selectedRow.motivo}</h5>
+                  <p>Sistema: {this.state.selectedRow.sistema}</p>
+                  <p>Tipo: {this.state.selectedRow.tipo}</p>
+                </div>
+              )} */}
+                </div>
 
-        <DataTable
-        columns={this.state.columnas}
-        data={empleadosFiltrados}
-        title={TABLE_TITLE}
-        pagination
-        paginationComponentOptions={paginacionOpciones}
-        fixedHeader
-        fixedHeaderScrollHeight={fixedHeaderScrollHeight}
-        noDataComponent={<span>No se encontró ningún elemento</span>}
-        />
+              </div>
+            </div>
+
+            <DataTable
+              columns={this.state.columnas}
+              data={empleadosFiltrados}
+              title={TABLE_TITLE}
+              pagination
+              paginationComponentOptions={paginacionOpciones}
+              fixedHeader
+              fixedHeaderScrollHeight={fixedHeaderScrollHeight}
+              noDataComponent={<span>No se encontró ningún elemento</span>}
+            />
+          </div>
+        }
       </div>
 
     )
   }
 }
+
 
 export default App;
