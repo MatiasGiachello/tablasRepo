@@ -149,6 +149,70 @@ const data = [
     sistema: "FARMA",
     acciones: "Ver Detalles"
   },
+  {
+    id: 15,
+    timeStamp: "07/02/23",
+    tipo: "LOG",
+    name: "Lucio Bertolini",
+    motivo: "Cierre por inactividad",
+    sistema: "FARMA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 16,
+    timeStamp: "09/08/23",
+    tipo: "MODIFI",
+    name: "Andres dordi",
+    motivo: "Inicio de sesion exitoso",
+    sistema: "LABORA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 17,
+    timeStamp: "11/08/23",
+    tipo: "ERROR",
+    name: "Pedro Martin",
+    motivo: "Inicio de sesion exitoso",
+    sistema: "FARMA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 18,
+    timeStamp: "10/07/21",
+    tipo: "MODIFI",
+    name: "Lucio Bertolini",
+    motivo: "generacion de tickets de Sistema ",
+    sistema: "COTIZA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 19,
+    timeStamp: "04/02/23",
+    tipo: "ERROR",
+    name: "Andres dordi",
+    motivo: "inicio de sesion",
+    sistema: "LABORA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 20,
+    timeStamp: "08/03/23",
+    tipo: "LOG",
+    name: "Lucio bertolini",
+    motivo: "Cierre de Sesion por inactividad",
+    sistema: "FARMA",
+    acciones: "Ver Detalles"
+  },
+  {
+    id: 21,
+    timeStamp: "12/05/23",
+    tipo: "MODIFI",
+    name: "Pedro Martin",
+    motivo: "Cierre de sesion de manera exitosa",
+    sistema: "FARMA",
+    acciones: "Ver Detalles"
+  },
+
 
 ]
 const paginacionOpciones = {
