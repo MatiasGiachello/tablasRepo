@@ -364,18 +364,6 @@ class App extends Component {
                   <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
                   />
                 </div>
-                <div>
-                  {/* {this.state.selectedRow && (
-                <div className="detalles-section">
-                  <h2>Detalles</h2>
-                  <p>Nombre: {this.state.selectedRow.name}</p>
-                  <p>TimeStamp: {this.state.selectedRow.timeStamp}</p>
-                  <h5>Evento: {this.state.selectedRow.motivo}</h5>
-                  <p>Sistema: {this.state.selectedRow.sistema}</p>
-                  <p>Tipo: {this.state.selectedRow.tipo}</p>
-                </div>
-              )} */}
-                </div>
 
               </div>
             </div>

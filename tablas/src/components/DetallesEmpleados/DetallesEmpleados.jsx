@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./DetallesEmpleados.css"
 
 const DetallesEmpleado = ({ empleado, onClose }) => {
   return (

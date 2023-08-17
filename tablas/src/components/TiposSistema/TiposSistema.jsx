@@ -17,29 +17,6 @@ const Sistemas = [
     },
 ];
 
-/**
- * A React component that renders a dropdown menu with options for selecting a system type.
- * 
- * @component
- * @example
- * import React, { useState } from 'react';
- * import TiposSistema from './TiposSistema';
- * 
- * function App() {
- *   const [tipoSeleccionado, setTipoSeleccionado] = useState('Todos');
- * 
- *   const handleTipoChange = (tipo) => {
- *     setTipoSeleccionado(tipo);
- *   };
- * 
- *   return (
- *     <div>
- *       <TiposSistema tipoSeleccionado={tipoSeleccionado} handleTipoChange={handleTipoChange} />
- *       <p>Selected type: {tipoSeleccionado}</p>
- *     </div>
- *   );
- * }
- */
 class TiposSistema extends Component {
     /**
      * Renders the component.
