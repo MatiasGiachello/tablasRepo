@@ -12,11 +12,10 @@ import DetallesEmpleado from './components/DetallesEmpleados/DetallesEmpleados';
 
 
 
-
 const data = [
   {
     id: 1,
-    timeStamp: "08/01/23",
+    timeStamp: "2023-01-08",
     tipo: "LOG",
     name: "Pedro Martin",
     motivo: "Inicio de sesion exitoso",
@@ -25,7 +24,7 @@ const data = [
   },
   {
     id: 2,
-    timeStamp: "24/01/23",
+    timeStamp: "2023-08-18",
     tipo: "LOG",
     name: "Lucio Bertolini",
     motivo: "Inicio de sesion fallido",
@@ -34,7 +33,7 @@ const data = [
   },
   {
     id: 3,
-    timeStamp: "09/01/23",
+    timeStamp: "2023-01-09",
     tipo: "MODIFI",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
@@ -43,7 +42,7 @@ const data = [
   },
   {
     id: 4,
-    timeStamp: "01/02/23",
+    timeStamp: "2023-02-01",
     tipo: "ERROR",
     name: "Lucio Bertolini",
     motivo: "Cierre por inactividad",
@@ -52,7 +51,7 @@ const data = [
   },
   {
     id: 5,
-    timeStamp: "22/01/23",
+    timeStamp: "2023-01-22",
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
@@ -61,7 +60,7 @@ const data = [
   },
   {
     id: 5,
-    timeStamp: "18/02/23",
+    timeStamp: "2023-02-18",
     tipo: "LOG",
     name: "Lucio Bertolibi",
     motivo: "Cierre por inactividad",
@@ -70,7 +69,7 @@ const data = [
   },
   {
     id: 6,
-    timeStamp: "12/02/23",
+    timeStamp: "2023-02-12",
     tipo: "LOG",
     name: "Pedro Martin",
     motivo: "Cierre por inactividad",
@@ -79,7 +78,7 @@ const data = [
   },
   {
     id: 7,
-    timeStamp: "17/02/23",
+    timeStamp: "2023-02-17",
     tipo: "LOG",
     name: "Andres Dordi",
     motivo: "Inicio de sesion exitoso",
@@ -88,7 +87,7 @@ const data = [
   },
   {
     id: 8,
-    timeStamp: "07/02/23",
+    timeStamp: "2023-02-07",
     tipo: "LOG",
     name: "Lucio Bertolini",
     motivo: "Cierre por inactividad",
@@ -97,7 +96,7 @@ const data = [
   },
   {
     id: 9,
-    timeStamp: "09/08/23",
+    timeStamp: "2023-08-09",
     tipo: "MODIFI",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
@@ -106,7 +105,7 @@ const data = [
   },
   {
     id: 10,
-    timeStamp: "11/08/23",
+    timeStamp: "2023-08-11",
     tipo: "ERROR",
     name: "Pedro Martin",
     motivo: "Inicio de sesion exitoso",
@@ -115,7 +114,7 @@ const data = [
   },
   {
     id: 11,
-    timeStamp: "10/07/21",
+    timeStamp: "2021-07-10",
     tipo: "MODIFI",
     name: "Lucio Bertolini",
     motivo: "generacion de tickets de Sistema ",
@@ -124,7 +123,7 @@ const data = [
   },
   {
     id: 12,
-    timeStamp: "04/02/23",
+    timeStamp: "2023-02-04",
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "inicio de sesion",
@@ -133,7 +132,7 @@ const data = [
   },
   {
     id: 13,
-    timeStamp: "08/03/23",
+    timeStamp: "2023-03-08",
     tipo: "LOG",
     name: "Lucio bertolini",
     motivo: "Cierre de Sesion por inactividad",
@@ -142,7 +141,7 @@ const data = [
   },
   {
     id: 14,
-    timeStamp: "12/05/23",
+    timeStamp: "2023-05-12",
     tipo: "MODIFI",
     name: "Pedro Martin",
     motivo: "Cierre de sesion de manera exitosa",
@@ -151,7 +150,7 @@ const data = [
   },
   {
     id: 15,
-    timeStamp: "07/02/23",
+    timeStamp: "2023-02-07",
     tipo: "LOG",
     name: "Lucio Bertolini",
     motivo: "Cierre por inactividad",
@@ -160,7 +159,7 @@ const data = [
   },
   {
     id: 16,
-    timeStamp: "09/08/23",
+    timeStamp: "2023-08-09",
     tipo: "MODIFI",
     name: "Andres dordi",
     motivo: "Inicio de sesion exitoso",
@@ -169,7 +168,7 @@ const data = [
   },
   {
     id: 17,
-    timeStamp: "11/08/23",
+    timeStamp: "2023-08-11",
     tipo: "ERROR",
     name: "Pedro Martin",
     motivo: "Inicio de sesion exitoso",
@@ -178,7 +177,7 @@ const data = [
   },
   {
     id: 18,
-    timeStamp: "10/07/21",
+    timeStamp: "2021-07-10",
     tipo: "MODIFI",
     name: "Lucio Bertolini",
     motivo: "generacion de tickets de Sistema ",
@@ -187,7 +186,7 @@ const data = [
   },
   {
     id: 19,
-    timeStamp: "04/02/23",
+    timeStamp: "2023-02-04",
     tipo: "ERROR",
     name: "Andres dordi",
     motivo: "inicio de sesion",
@@ -196,7 +195,7 @@ const data = [
   },
   {
     id: 20,
-    timeStamp: "08/03/23",
+    timeStamp: "2023-03-08",
     tipo: "LOG",
     name: "Lucio bertolini",
     motivo: "Cierre de Sesion por inactividad",
@@ -205,7 +204,7 @@ const data = [
   },
   {
     id: 21,
-    timeStamp: "12/05/23",
+    timeStamp: "2023-05-12",
     tipo: "MODIFI",
     name: "Pedro Martin",
     motivo: "Cierre de sesion de manera exitosa",
@@ -215,6 +214,210 @@ const data = [
 
 
 ]
+
+
+// const data = [
+//   {
+//     id: 1,
+//     timeStamp: "08/01/23",
+//     tipo: "LOG",
+//     name: "Pedro Martin",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "COTIZA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 2,
+//     timeStamp: "18/08/23",
+//     tipo: "LOG",
+//     name: "Lucio Bertolini",
+//     motivo: "Inicio de sesion fallido",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 3,
+//     timeStamp: "09/01/23",
+//     tipo: "MODIFI",
+//     name: "Andres dordi",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 4,
+//     timeStamp: "01/02/23",
+//     tipo: "ERROR",
+//     name: "Lucio Bertolini",
+//     motivo: "Cierre por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 5,
+//     timeStamp: "22/01/23",
+//     tipo: "ERROR",
+//     name: "Andres dordi",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 5,
+//     timeStamp: "18/02/23",
+//     tipo: "LOG",
+//     name: "Lucio Bertolibi",
+//     motivo: "Cierre por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 6,
+//     timeStamp: "12/02/23",
+//     tipo: "LOG",
+//     name: "Pedro Martin",
+//     motivo: "Cierre por inactividad",
+//     sistema: "COTIZA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 7,
+//     timeStamp: "17/02/23",
+//     tipo: "LOG",
+//     name: "Andres Dordi",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 8,
+//     timeStamp: "07/02/23",
+//     tipo: "LOG",
+//     name: "Lucio Bertolini",
+//     motivo: "Cierre por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 9,
+//     timeStamp: "09/08/23",
+//     tipo: "MODIFI",
+//     name: "Andres dordi",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 10,
+//     timeStamp: "11/08/23",
+//     tipo: "ERROR",
+//     name: "Pedro Martin",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 11,
+//     timeStamp: "10/07/21",
+//     tipo: "MODIFI",
+//     name: "Lucio Bertolini",
+//     motivo: "generacion de tickets de Sistema ",
+//     sistema: "COTIZA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 12,
+//     timeStamp: "04/02/23",
+//     tipo: "ERROR",
+//     name: "Andres dordi",
+//     motivo: "inicio de sesion",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 13,
+//     timeStamp: "08/03/23",
+//     tipo: "LOG",
+//     name: "Lucio bertolini",
+//     motivo: "Cierre de Sesion por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 14,
+//     timeStamp: "12/05/23",
+//     tipo: "MODIFI",
+//     name: "Pedro Martin",
+//     motivo: "Cierre de sesion de manera exitosa",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 15,
+//     timeStamp: "07/02/23",
+//     tipo: "LOG",
+//     name: "Lucio Bertolini",
+//     motivo: "Cierre por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 16,
+//     timeStamp: "09/08/23",
+//     tipo: "MODIFI",
+//     name: "Andres dordi",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 17,
+//     timeStamp: "11/08/23",
+//     tipo: "ERROR",
+//     name: "Pedro Martin",
+//     motivo: "Inicio de sesion exitoso",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 18,
+//     timeStamp: "10/07/21",
+//     tipo: "MODIFI",
+//     name: "Lucio Bertolini",
+//     motivo: "generacion de tickets de Sistema ",
+//     sistema: "COTIZA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 19,
+//     timeStamp: "04/02/23",
+//     tipo: "ERROR",
+//     name: "Andres dordi",
+//     motivo: "inicio de sesion",
+//     sistema: "LABORA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 20,
+//     timeStamp: "08/03/23",
+//     tipo: "LOG",
+//     name: "Lucio bertolini",
+//     motivo: "Cierre de Sesion por inactividad",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+//   {
+//     id: 21,
+//     timeStamp: "12/05/23",
+//     tipo: "MODIFI",
+//     name: "Pedro Martin",
+//     motivo: "Cierre de sesion de manera exitosa",
+//     sistema: "FARMA",
+//     acciones: "Ver Detalles"
+//   },
+
+
+// ]
 const paginacionOpciones = {
   rowsPerPageText: 'Filas por Página',
   rangeSeparatorText: 'de',
@@ -425,7 +628,7 @@ class App extends Component {
                     tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
                 </div>
                 <div className='filtro-column'>
-                  <FiltradoFechas data={this.state.empleados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
+                  <FiltradoFechas data={this.state.empleadosFiltrados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
                   />
                 </div>
 
