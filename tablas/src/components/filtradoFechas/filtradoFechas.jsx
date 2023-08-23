@@ -39,7 +39,7 @@ class FiltradoFechas extends Component {
             <div>
                 <div>
                     <div className='fechas'>
-                        <label>  desde: </label>
+                        <label>  Desde: </label>
                     </div>
                     <input
                         type="date"
@@ -48,7 +48,7 @@ class FiltradoFechas extends Component {
                     />
                 </div>
                 <div className='fechas'>
-                    <label>  hasta:  </label>
+                    <label>  Hasta:  </label>
                     <input
                         type="date"
                         value={this.state.fechaFin}
