@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ReactDOM } from 'react';
@@ -231,15 +231,16 @@ class App extends Component {
     tipos: data,
     selectedRow: null,
   };
-
+  
   handleTipoChange = (tipo) => {
+    const _empleados = this.state.tipoSistemaSeleccionado === 'Todos' ? this.state.empleados : this.state.empleados.filter(item => item.sistema === this.state.tipoSistemaSeleccionado);
     if (tipo === 'Todos') {
       this.setState({
         tipoSeleccionado: tipo,
-        empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
+        empleadosFiltrados: _empleados, // Restablecer empleados filtrados a todos los datos
       });
     } else {
-      const empleadosFiltradosPorTipo = this.state.empleados.filter(item => item.tipo === tipo);
+      const empleadosFiltradosPorTipo = _empleados.filter(item => item.tipo === tipo);
 
       this.setState({
         tipoSeleccionado: tipo,
@@ -256,10 +257,11 @@ class App extends Component {
    * 
   */
   handleTipoSistemaChange = (tipo) => {
+    const _empleados = this.state.tipoSeleccionado === 'Todos' ? this.state.empleados : this.state.empleados.filter(item => item.tipo === this.state.tipoSeleccionado);
     if (tipo === 'Todos') {
       this.setState({
         tipoSistemaSeleccionado: tipo,
-        empleadosFiltrados: this.state.empleados, // Restablecer empleados filtrados a todos los datos
+        empleadosFiltrados: _empleados, // Restablecer empleados filtrados a todos los datos
       });
     } else {
       /**
@@ -269,7 +271,6 @@ class App extends Component {
        * Arriba deberias tener en cuenta lo mismo. Hace la prueba, filtra primero por LOG y luego por ERROR.
        * Aunque tenes datos para coincidir con ERROR, no te los muestra.
        */
-      const _empleados = this.state.empleados.filter(item => item.tipo === this.state.tipoSeleccionado);
       const empleadosFiltradosPorTipoSistema = _empleados.filter(item => item.sistema === tipo);
 
 
@@ -286,25 +287,27 @@ class App extends Component {
 
 
   filtrarElementos = () => {
-    const search = data.filter(item => {
-      if (
-        item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
+    
+    const filtrados = this.state.tipoSeleccionado === 'Todos' ? this.state.empleados : this.state.empleados.filter((item) => {
+      return item.tipo === this.state.tipoSeleccionado;
+    });
+
+    const filtradosII = this.state.tipoSistemaSeleccionado === 'Todos' ? filtrados : filtrados.filter((item) => {
+      return item.sistema === this.state.tipoSistemaSeleccionado;
+    });
+
+    console.log("ACAD", this.state.busqueda)
+
+    const search = this.state.busqueda == '' ? filtradosII : filtradosII.filter(item => {
+      return item.timeStamp.toLowerCase().includes(this.state.busqueda) ||
         item.tipo.toLowerCase().includes(this.state.busqueda) ||
         item.name.toLowerCase().includes(this.state.busqueda) ||
         item.motivo.toLowerCase().includes(this.state.busqueda) ||
         item.sistema.toLowerCase().includes(this.state.busqueda) ||
         item.acciones.toLowerCase().includes(this.state.busqueda)
-      ) {
-        return true;
-      }
-      return false;
     });
 
-    const tiposFiltro = this.state.empleadosFiltrados.filter((item) => {
-      return this.state.tipoSeleccionado === 'Todos' || item.tipo === this.state.tipoSeleccionado;
-    });
-
-    this.setState({ empleados: search, empleadosFiltrados: tiposFiltro });
+    this.setState({ empleadosFiltrados: search });
   };
 
 
@@ -314,8 +317,7 @@ class App extends Component {
 
   onChange = async e => {
     e.persist();
-    await this.setState({ busqueda: e.target.value });
-    this.filtrarElementos();
+    this.setState({ busqueda: e.target.value });
   }
   asignarColumnas = () => {
     const columnas = [
@@ -398,6 +400,7 @@ class App extends Component {
                 name="busqueda"
                 value={this.state.busqueda}
                 onChange={this.onChange}
+                onKeyUp={this.filtrarElementos}
               />
               <button type="button" className="btnBuscar" /*onClick={onClear}*/>
                 {" "}
@@ -412,7 +415,7 @@ class App extends Component {
                 </div>
                 <div className='filtro-column'>
                   <TiposSistema
-                    tipoSeleccionado={this.state.tipoSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
+                    tipoSeleccionado={this.state.tipoSistemaSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
                 </div>
                 <div className='filtro-column'>
                   <FiltradoFechas data={this.state.empleadosFiltrados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"

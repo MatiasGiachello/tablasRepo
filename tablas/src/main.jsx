@@ -11,8 +11,5 @@ import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    <TiposFiltro />
-    <TiposSistema />
-    <FiltradoFechas />
   </React.StrictMode>,
 )
