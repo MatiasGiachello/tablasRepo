@@ -378,7 +378,7 @@ class App extends Component {
 
   render() {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
-    const TABLE_TITLE = "Surfactan";
+    const TABLE_TITLE = "Tabla Proyectora";
     const fixedHeaderScrollHeight = "600px";
     return (
       <div>

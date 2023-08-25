@@ -5,7 +5,7 @@ import './index.css'
 import TiposFiltro from './components/TiposFiltro/TiposFiltro.jsx'
 import TiposSistema from './components/TiposSistema/TiposSistema.jsx'
 import FiltradoFechas from './components/FiltradoFechas/FiltradoFechas.jsx'
-//import Item from './components/Item/Item.jsx'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,6 +14,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <TiposFiltro />
     <TiposSistema />
     <FiltradoFechas />
-    {/* //<Item /> */}
   </React.StrictMode>,
 )

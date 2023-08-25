@@ -91,7 +91,8 @@
 
 /* Columna de filtro */
 .filtro-column {
-  flex: 0 1 calc(33.33% - 10px); /* Tamaño ajustado para 3 columnas en una fila */
+  /* flex: 0 1 calc(33.33% - 10px); */
+
   padding: 15px;
   background-color: #ffffff9c;
 }
@@ -99,7 +100,7 @@
 /* Estilo individual de los filtros */
 .filtro {
   background-color: #ffffffcc;
-  padding: 10px; /* Reduje el padding para hacerlo más compacto */
+  padding: 10px;
   margin-bottom: 10px;
 }
 
@@ -112,11 +113,14 @@
   border-radius: 10px;
 }
 
-.btn-ver-detalles:hover{
+.btn-ver-detalles:hover {
   transition: 0, 0, 1;
-  
+
 }
 
+.imgLogo {
+  max-width: 20%;
+  height: 126px;
+  padding: 15px;
+}
 
-
-  
