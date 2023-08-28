@@ -231,7 +231,7 @@ class App extends Component {
     tipos: data,
     selectedRow: null,
   };
-  
+
   handleTipoChange = (tipo) => {
     const _empleados = this.state.tipoSistemaSeleccionado === 'Todos' ? this.state.empleados : this.state.empleados.filter(item => item.sistema === this.state.tipoSistemaSeleccionado);
     if (tipo === 'Todos') {
@@ -287,7 +287,7 @@ class App extends Component {
 
 
   filtrarElementos = () => {
-    
+
     const filtrados = this.state.tipoSeleccionado === 'Todos' ? this.state.empleados : this.state.empleados.filter((item) => {
       return item.tipo === this.state.tipoSeleccionado;
     });
@@ -382,49 +382,57 @@ class App extends Component {
     const { tipoSeleccionado, empleadosFiltrados } = this.state;
     const TABLE_TITLE = "Tabla Proyectora";
     const fixedHeaderScrollHeight = "600px";
+
     return (
-      <div>
-        {this.state.selectedRow ?
-          <div>
+        this.state.selectedRow ?
+          <div className='grid-container'>
             {this.state.selectedRow && (
               <DetallesEmpleado empleado={this.state.selectedRow} onClose={this.cerrarDetalles} />
             )}
           </div>
           :
-          <div className="table-responsive" >
-            <div className="barraBusqueda">
-              <input
-                type="text"
-                placeholder="Buscar"
-                className="textField"
-                name="busqueda"
-                value={this.state.busqueda}
-                onChange={this.onChange}
-                onKeyUp={this.filtrarElementos}
-              />
-              <button type="button" className="btnBuscar" /*onClick={onClear}*/>
-                {" "}
-                <FontAwesomeIcon icon={faSearch} />
-              </button>
-              <div className='filtros-container'>
-                <div className='filtro-column'>
+          <div className="table-container">
+            <div className="header-container">
+              <div className="filtros-container">
+                <div className="filtro-column">
                   <TiposFiltro
-                    tipoSeleccionado={this.state.tipoSeleccionado}
-                    handleTipoChange={this.handleTipoChange} className="filtro"
+                    tipoSeleccionado={tipoSeleccionado}
+                    handleTipoChange={this.handleTipoChange} className="fitro"
                   />
                 </div>
-                <div className='filtro-column'>
+                <div className="filtro-column">
                   <TiposSistema
-                    tipoSeleccionado={this.state.tipoSistemaSeleccionado} handleTipoChange={this.handleTipoSistemaChange} className="filtro" />
-                </div>
-                <div className='filtro-column'>
-                  <FiltradoFechas data={this.state.empleadosFiltrados} actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="filtro"
+                    tipoSeleccionado={this.state.tipoSistemaSeleccionado}
+                    handleTipoChange={this.handleTipoSistemaChange}
+                    className="fitro"
                   />
                 </div>
-
+                <div className="filtro-column">
+                  <FiltradoFechas
+                    data={empleadosFiltrados}
+                    actualizarElementosFiltrados={this.actualizarElementosFiltrados} className="fitro"
+                  />
+                </div>
               </div>
             </div>
 
+            <div className="table-responsive">
+              <div className="barraBusqueda">
+                <input
+                  type="text"
+                  placeholder="Buscar"
+                  className="textField"
+                  name="busqueda"
+                  value={this.state.busqueda}
+                  onChange={this.onChange}
+                  onKeyUp={this.filtrarElementos}
+                />
+                <button type="button" className="btnBuscar" /*onClick={onClear}*/>
+                  {" "}
+                  <FontAwesomeIcon icon={faSearch} />
+                </button>
+              </div>
+            </div>
             <DataTable
               columns={this.state.columnas}
               data={empleadosFiltrados}
@@ -436,12 +444,10 @@ class App extends Component {
               noDataComponent={<span>No se encontró ningún elemento</span>}
             />
           </div>
-        }
-      </div>
 
-    )
+      
+    );
   }
 }
 
-
-export default App;
+        export default App;

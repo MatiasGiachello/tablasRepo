@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./FiltradoFechas.css"
 
 class FiltradoFechas extends Component {
     constructor(props) {
@@ -36,28 +36,29 @@ class FiltradoFechas extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <div className='fechas'>
-                        <label>  Desde: </label>
-                    </div>
+            <div className="filtro-fechas-container">
+                <div className="fechas">
+                    <label className="fechas-label">Desde:</label>
                     <input
+                        className="fechas-input"
                         type="date"
                         value={this.state.fechaInicio}
                         onChange={this.handleFechaInicioChange}
                     />
                 </div>
-                <div className='fechas'>
-                    <label>  Hasta:  </label>
+                <div className="fechas">
+                    <label className="fechas-label">Hasta:</label>
                     <input
+                        className="fechas-input"
                         type="date"
                         value={this.state.fechaFin}
                         onChange={this.handleFechaFinChange}
                     />
                 </div>
-                <button onClick={this.filtrarPorRangoFechas}>Filtrar</button>
+                <button className="filtrar-button" onClick={this.filtrarPorRangoFechas}>Filtrar</button>
             </div>
         );
+
     }
 }
 

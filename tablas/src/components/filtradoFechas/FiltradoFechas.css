@@ -1,0 +1,37 @@
+.filtro-fechas-container {
+    display: flex;
+    align-items:flex-end;
+    gap: 20px;
+}
+
+.fechas {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.fechas-label {
+    font-size: 14px;
+}
+
+.fechas-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filtrar-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.filtrar-button:hover {
+    background-color: #0056b3;
+}

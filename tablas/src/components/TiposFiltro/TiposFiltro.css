@@ -1,0 +1,21 @@
+.filtro {
+    display: flex;
+    align-items: center;
+}
+
+.filtro-tipo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filtro-label {
+    font-size: 14px;
+}
+
+.filtro-select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}

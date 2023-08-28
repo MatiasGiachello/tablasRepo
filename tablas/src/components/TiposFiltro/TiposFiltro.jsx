@@ -18,12 +18,12 @@ const tipos = [
 class TiposFiltro extends Component {
     render() {
         const { tipoSeleccionado, handleTipoChange } = this.props;
-
         return (
-            <div className='filtro'>
-                <div>
-                    <label>Seleccionar Tipo:</label>
+            <div className="filtro">
+                <div className="filtro-tipo">
+                    <label className="filtro-label">Seleccionar Tipo:</label>
                     <select
+                        className="filtro-select"
                         value={tipoSeleccionado}
                         onChange={(e) => handleTipoChange(e.target.value)}
                     >
@@ -37,6 +37,7 @@ class TiposFiltro extends Component {
                 </div>
             </div>
         );
+
     }
 }
 
